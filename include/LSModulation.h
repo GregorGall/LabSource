@@ -2,6 +2,7 @@
 
 #pragma once
 #include <vector>
+#include <functional>
 
 /*-------------------------------------------------------------------------------------------------------------------*/
 // Класс типов модуляции:
@@ -21,7 +22,7 @@ enum class Modulation
 
 struct ModParameters
 {
-    using modF = double (*)(double);                                         // Тип - указатель на модулирующую функцию
+    using modF = std::function<double(double)>;                              // Тип - указатель на модулирующую функцию
 
     modF modFunction = nullptr;                                              // Модулирующая функция (указатель)
     Modulation modType = Modulation::NON;                                    // Тип модуляции
@@ -36,5 +37,8 @@ double v_line(double now);
 double linear(double now);                                  
 double code(double now);
 double step(double now);
+
+ModParameters::modF getSinMod(double time, int number);
+
 
 /*===================================================================================================================*/
