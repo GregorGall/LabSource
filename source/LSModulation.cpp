@@ -29,7 +29,7 @@ double code(double now) {
 
     std::vector<double> code{ 1,1,1,0,0,1,0 };
 
-    int size = code.size();
+    auto size = code.size();
     double period = (stop - start) / size;
     int index = int(now / period);
 
