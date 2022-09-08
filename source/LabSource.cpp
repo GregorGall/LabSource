@@ -101,7 +101,6 @@ auto LabSource::sin(ModParameters modulation) -> LabSource& {
 
         /* Рефакторинг: вычисление полного интеграла на каждой иттерации не оптимально */
         if (modulation.modType == Modulation::FRQ) {
-            auto a = integral(modulation.modFunction, start, now, timeDiscrete);
             phase += 8 * atan(1) * modulation.depth * integral(modulation.modFunction, start, now, timeDiscrete);
         }
         

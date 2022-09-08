@@ -100,7 +100,9 @@ auto LabSource::setDotsPerOsc(int dotsPerOsc) -> LabSource&
 
 auto LabSource::setModParameters(ModParameters modParameters) -> LabSource&
 {
-    LabSource::modParameters = modParameters;
+    LabSource::modParameters.depth = modParameters.depth;
+    LabSource::modParameters.modType = modParameters.modType;
+    LabSource::modParameters.modFunction = modParameters.modFunction;
 
     return *this;
 }
