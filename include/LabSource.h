@@ -1,5 +1,5 @@
 /*###################################################################################################################*/
-// Класс генератор
+// РљР»Р°СЃСЃ РіРµРЅРµСЂР°С‚РѕСЂ
 
 #pragma once
 
@@ -15,39 +15,39 @@ class LabSource:public DMath
 
 private:
 
-    double stop;                                              // Начальный момент времени (запись в аргумент now + end)
-    double start;                                             // Конечный момент времени
-    double timeDiscrete;                                      // Временной дискрет
+    double stop;                                              // РќР°С‡Р°Р»СЊРЅС‹Р№ РјРѕРјРµРЅС‚ РІСЂРµРјРµРЅРё (Р·Р°РїРёСЃСЊ РІ Р°СЂРіСѓРјРµРЅС‚ now + end)
+    double start;                                             // РљРѕРЅРµС‡РЅС‹Р№ РјРѕРјРµРЅС‚ РІСЂРµРјРµРЅРё
+    double timeDiscrete;                                      // Р’СЂРµРјРµРЅРЅРѕР№ РґРёСЃРєСЂРµС‚
 
-    double frequency;                                         // Частота
-    double mult = 1;                                          // Множитель частоты
-    double phase = 0;                                         // Начальная фаза
-    double amplitude = 1;                                     // Амплитуда
+    double frequency;                                         // Р§Р°СЃС‚РѕС‚Р°
+    double mult = 1;                                          // РњРЅРѕР¶РёС‚РµР»СЊ С‡Р°СЃС‚РѕС‚С‹
+    double phase = 0;                                         // РќР°С‡Р°Р»СЊРЅР°СЏ С„Р°Р·Р°
+    double amplitude = 1;                                     // РђРјРїР»РёС‚СѓРґР°
 
-    int dotsPerOsc = 64;                                      // Количество точек моделируемых на единицу частоты
-    int dotsPerModel;                                         // Количество точек моделируемых за один вызов
-    bool sampling{true};                                      // Режим расчета временного дискрета
-    ModParameters modParameters{};                            // Параметры модуляции
+    int dotsPerOsc = 64;                                      // РљРѕР»РёС‡РµСЃС‚РІРѕ С‚РѕС‡РµРє РјРѕРґРµР»РёСЂСѓРµРјС‹С… РЅР° РµРґРёРЅРёС†Сѓ С‡Р°СЃС‚РѕС‚С‹
+    int dotsPerModel;                                         // РљРѕР»РёС‡РµСЃС‚РІРѕ С‚РѕС‡РµРє РјРѕРґРµР»РёСЂСѓРµРјС‹С… Р·Р° РѕРґРёРЅ РІС‹Р·РѕРІ
+    bool sampling{true};                                      // Р РµР¶РёРј СЂР°СЃС‡РµС‚Р° РІСЂРµРјРµРЅРЅРѕРіРѕ РґРёСЃРєСЂРµС‚Р°
+    ModParameters modParameters{};                            // РџР°СЂР°РјРµС‚СЂС‹ РјРѕРґСѓР»СЏС†РёРё
 
 public:
 
-    LabSource(double start, double stop, double frequency);   // Конструктор (начальное время, конечное время, частота)
+    LabSource(double start, double stop, double frequency);   // РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ (РЅР°С‡Р°Р»СЊРЅРѕРµ РІСЂРµРјСЏ, РєРѕРЅРµС‡РЅРѕРµ РІСЂРµРјСЏ, С‡Р°СЃС‚РѕС‚Р°)
 
-    auto sin()                              -> LabSource&;    // Синусоида
-    auto level(double  level)               -> LabSource&;    // Уровень
-    auto sin(ModParameters modPr)           -> LabSource&;    // Модулированная синусоида
+    auto sin()                              -> LabSource&;    // РЎРёРЅСѓСЃРѕРёРґР°
+    auto level(double  level)               -> LabSource&;    // РЈСЂРѕРІРµРЅСЊ
+    auto sin(ModParameters modPr)           -> LabSource&;    // РњРѕРґСѓР»РёСЂРѕРІР°РЅРЅР°СЏ СЃРёРЅСѓСЃРѕРёРґР°
     auto ambguity(double lFreq,
                   double rFreq,
-                  double step)              -> field;         // Функция неопределенности сигнала
+                  double step)              -> field;         // Р¤СѓРЅРєС†РёСЏ РЅРµРѕРїСЂРµРґРµР»РµРЅРЅРѕСЃС‚Рё СЃРёРіРЅР°Р»Р°
 
-    auto clear()                            -> LabSource&;    // Очистка вывода
-    auto modelDots()                        -> void;          // Расчет количества моделируемых точек
+    auto clear()                            -> LabSource&;    // РћС‡РёСЃС‚РєР° РІС‹РІРѕРґР°
+    auto modelDots()                        -> void;          // Р Р°СЃС‡РµС‚ РєРѕР»РёС‡РµСЃС‚РІР° РјРѕРґРµР»РёСЂСѓРµРјС‹С… С‚РѕС‡РµРє
 
     static auto ambguity(double lFreq,
                          double rFreq,
                          double step,
                          LabSource& source1,
-                         LabSource& source2) -> field;         // Функция неопределенности сигнала
+                         LabSource& source2) -> field;         // Р¤СѓРЅРєС†РёСЏ РЅРµРѕРїСЂРµРґРµР»РµРЅРЅРѕСЃС‚Рё СЃРёРіРЅР°Р»Р°
 
 /*-------------------------------------------------------------------------------------------------------------------*/
 
