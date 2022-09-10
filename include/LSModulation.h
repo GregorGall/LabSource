@@ -39,6 +39,7 @@ double code(double now);
 double step(double now);
 
 ModParameters::modF getSinMod(double time, int number);
+ModParameters::modF getCodeMod(double discret, std::vector<int> code);
 
 
 /*===================================================================================================================*/
