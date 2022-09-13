@@ -59,7 +59,7 @@ ModParameters::modF getSinMod(double time, int number) {
 /*-------------------------------------------------------------------------------------------------------------------*/
 // Генератор модулирующей последовательности:
 
-ModParameters::modF getCodeMod(double discret, std::vector<int> code) {
+ModParameters::modF getCodeMod(double discret, std::vector<double> code) {
     auto coder = [=](double now) { 
         auto index = size_t(now / discret);
         return index < code.size() ? code[index] : 0;  

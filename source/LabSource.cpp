@@ -126,6 +126,20 @@ auto LabSource::sin() -> LabSource& {
 }
 
 /*-------------------------------------------------------------------------------------------------------------------*/
+// Синусоида:
+
+auto LabSource::hilbertTransform() -> LabSource& {
+
+    cmFT();
+    for (size_t i = 0; i < function.size(); ++i) {
+        argument[i].real() > 0 ? function[i] *= 2 : function[i] = 0;
+    }
+    setRange(start, stop).cmFT(-1);
+
+    return *this;
+}
+
+/*-------------------------------------------------------------------------------------------------------------------*/
 // Расчет функции неопределенности:
 
 auto LabSource::ambguity(double lFreq, double rFreq, double step, LabSource& source1, LabSource& source2) -> field

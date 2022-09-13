@@ -36,6 +36,7 @@ public:
     auto sin()                              -> LabSource&;    // Синусоида
     auto level(double  level)               -> LabSource&;    // Уровень
     auto sin(ModParameters modPr)           -> LabSource&;    // Модулированная синусоида
+    auto hilbertTransform()                 -> LabSource&;    // Преобразования Гильберта
     auto ambguity(double lFreq,
                   double rFreq,
                   double step)              -> field;         // Функция неопределенности сигнала
